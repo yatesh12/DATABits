@@ -1,0 +1,217 @@
+/* Define theme variables */
+:root {
+  --primary-color: #2f00ba;
+  --secondary-color: #212529;
+  --accent-color: #2a2e32;
+  --text-color: #000000;
+  --hover-color: #53e241;
+  --dropdown-bg: #333;
+  --dropdown-hover-bg: #444;
+}
+
+/* Make header sticky */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #000000;
+  padding: 4px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-color);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  z-index: 999;
+  box-shadow: 0 1px 2px rgba(255, 255, 255, 0.288);
+}
+
+body {
+  padding-top: 60px; /* adjust to match header height */
+}
+
+/* Gradient bottom border for header */
+/* keep a crisp thin accent line if you want */
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.03);
+  pointer-events: none;
+}
+
+/* Ensure header contents sit above the gradient border */
+.header > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo styling */
+.header .logo {
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+  font-weight: bold;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.header .logo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Navigation styling */
+.header nav {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.header nav ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.header nav ul li {
+  position: relative;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.header nav ul li a {
+  color: rgb(223, 223, 223);
+  text-decoration: none;
+  padding: 0px 10px;
+  display: block;
+  font-size: 1.1rem;
+}
+
+/* Dropdown menu */
+.header nav ul li .dropdown {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  flex-direction: column;
+  background-color: var(--dropdown-bg);
+  padding: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header nav ul li .dropdown li {
+  padding: 8px 15px;
+}
+
+.header nav ul li .dropdown li a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+/* Right side (search, login, register) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Search form */
+.search-form {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 0 14px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 6px;
+  outline: none;
+  width: 200px;
+  font-size: 14px;
+}
+
+.search-btn {
+  background: rgba(8, 0, 255, 0.16);
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+/* Auth buttons */
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.register-btn {
+  padding: 6px 16px;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  color: #121212;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.login-icon {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Decoration Square (optional) */
+.decoration-square {
+  position: absolute;
+  right: 30px;
+  width: 160px;
+  height: 160px;
+  background: rgba(90, 252, 69, 0.2);
+  z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+    padding: 12px 20px;
+  }
+  
+  .header nav ul {
+    flex-direction: column;
+    background-color: var(--secondary-color);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+  }
+  
+  .header nav ul.active {
+    display: flex;
+  }
+  
+  .header-right {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
